@@ -1,0 +1,5 @@
+az deployment create \
+  -n adventure-works-rg \
+  -l eastus \
+  --template-uri https://raw.githubusercontent.com/dmitrycx/Azure2018Q4/dev/Module1/CreateRG.json \
+  --parameters rgName=adventure-works-rg rgLocation=eastus
