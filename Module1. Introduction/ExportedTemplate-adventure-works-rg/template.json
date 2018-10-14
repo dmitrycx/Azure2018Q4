@@ -1,0 +1,1105 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "publicIPAddresses_aw_gateway_ip_domainNameLabel": {
+            "defaultValue": null,
+            "type": "SecureString"
+        },
+        "virtualNetworks_aw_vnet_name": {
+            "defaultValue": "aw-vnet",
+            "type": "String"
+        },
+        "virtualMachines_aw_vm_sql_name": {
+            "defaultValue": "aw-vm-sql",
+            "type": "String"
+        },
+        "virtualMachines_aw_vm_app1_name": {
+            "defaultValue": "aw-vm-app1",
+            "type": "String"
+        },
+        "virtualMachines_aw_vm_app2_name": {
+            "defaultValue": "aw-vm-app2",
+            "type": "String"
+        },
+        "networkInterfaces_aw_vm_nic_name": {
+            "defaultValue": "aw-vm-nic",
+            "type": "String"
+        },
+        "publicIPAddresses_aw_admin_ip_name": {
+            "defaultValue": "aw-admin-ip",
+            "type": "String"
+        },
+        "networkInterfaces_aw_vm_sql640_name": {
+            "defaultValue": "aw-vm-sql640",
+            "type": "String"
+        },
+        "networkInterfaces_aw_vm_app1773_name": {
+            "defaultValue": "aw-vm-app1773",
+            "type": "String"
+        },
+        "networkInterfaces_aw_vm_app2496_name": {
+            "defaultValue": "aw-vm-app2496",
+            "type": "String"
+        },
+        "publicIPAddresses_aw_gateway_ip_name": {
+            "defaultValue": "aw-gateway-ip",
+            "type": "String"
+        },
+        "applicationGateways_aw_app_gateway_name": {
+            "defaultValue": "aw-app-gateway",
+            "type": "String"
+        },
+        "networkSecurityGroups_aw_vm_app_nsg_name": {
+            "defaultValue": "aw-vm-app-nsg",
+            "type": "String"
+        },
+        "availabilitySets_aw_availability_set_name": {
+            "defaultValue": "aw-availability-set",
+            "type": "String"
+        },
+        "storageAccounts_adventureworksrgdiag_name": {
+            "defaultValue": "adventureworksrgdiag",
+            "type": "String"
+        },
+        "schedules_shutdown_computevm_aw_vm_sql_name": {
+            "defaultValue": "shutdown-computevm-aw-vm-sql",
+            "type": "String"
+        },
+        "schedules_shutdown_computevm_aw_vm_app2_name": {
+            "defaultValue": "shutdown-computevm-aw-vm-app2",
+            "type": "String"
+        },
+        "schedules_shutdown_computevm_aw_vm_app1_name": {
+            "defaultValue": "shutdown-computevm-aw-vm-app1",
+            "type": "String"
+        },
+        "subnets_aw_vm_subnet_name": {
+            "defaultValue": "aw-vm-subnet",
+            "type": "String"
+        },
+        "subnets_aw_gateway_subnet_name": {
+            "defaultValue": "aw-gateway-subnet",
+            "type": "String"
+        },
+        "disks_aw_vm_app1_OsDisk_1_349e084f2c0e47d78319dd44bd36d249_name": {
+            "defaultValue": "aw-vm-app1_OsDisk_1_349e084f2c0e47d78319dd44bd36d249",
+            "type": "String"
+        },
+        "securityRules_default_allow_rdp_name": {
+            "defaultValue": "default-allow-rdp",
+            "type": "String"
+        },
+        "virtualMachines_aw_vm_app1_id": {
+            "defaultValue": "/subscriptions/b6a799d5-67cd-4e7e-a7e5-32064ffc8ddd/resourceGroups/ADVENTURE-WORKS-RG/providers/Microsoft.Compute/disks/aw-vm-app1_OsDisk_1_ba135ddbfc384fe99f31a8cbd44582c2",
+            "type": "String"
+        },
+        "virtualMachines_aw_vm_app2_id": {
+            "defaultValue": "/subscriptions/b6a799d5-67cd-4e7e-a7e5-32064ffc8ddd/resourceGroups/adventure-works-rg/providers/Microsoft.Compute/disks/aw-vm-app2_OsDisk_1_1079db9f1c8c43558c0c523c7bdefce9",
+            "type": "String"
+        },
+        "virtualMachines_aw_vm_sql_id": {
+            "defaultValue": "/subscriptions/b6a799d5-67cd-4e7e-a7e5-32064ffc8ddd/resourceGroups/adventure-works-rg/providers/Microsoft.Compute/disks/aw-vm-sql_OsDisk_1_1308fd66e8ab4d8a8e39a0c0b1dd1616",
+            "type": "String"
+        },
+        "virtualMachines_aw_vm_sql_id_1": {
+            "defaultValue": "/subscriptions/b6a799d5-67cd-4e7e-a7e5-32064ffc8ddd/resourceGroups/adventure-works-rg/providers/Microsoft.Compute/disks/aw-vm-sql_disk2_d84a74cf7b9945b6a19459ac18e6ec2f",
+            "type": "String"
+        },
+        "applicationGateways_aw_app_gateway_id": {
+            "defaultValue": "/subscriptions/b6a799d5-67cd-4e7e-a7e5-32064ffc8ddd/resourceGroups/adventure-works-rg/providers/Microsoft.Network/applicationGateways/aw-app-gateway/frontendIPConfigurations/appGatewayFrontendIP",
+            "type": "String"
+        },
+        "applicationGateways_aw_app_gateway_id_1": {
+            "defaultValue": "/subscriptions/b6a799d5-67cd-4e7e-a7e5-32064ffc8ddd/resourceGroups/adventure-works-rg/providers/Microsoft.Network/applicationGateways/aw-app-gateway/frontendPorts/appGatewayFrontendPort",
+            "type": "String"
+        },
+        "applicationGateways_aw_app_gateway_id_2": {
+            "defaultValue": "/subscriptions/b6a799d5-67cd-4e7e-a7e5-32064ffc8ddd/resourceGroups/adventure-works-rg/providers/Microsoft.Network/applicationGateways/aw-app-gateway/httpListeners/appGatewayHttpListener",
+            "type": "String"
+        },
+        "applicationGateways_aw_app_gateway_id_3": {
+            "defaultValue": "/subscriptions/b6a799d5-67cd-4e7e-a7e5-32064ffc8ddd/resourceGroups/adventure-works-rg/providers/Microsoft.Network/applicationGateways/aw-app-gateway/backendAddressPools/appGatewayBackendPool",
+            "type": "String"
+        },
+        "applicationGateways_aw_app_gateway_id_4": {
+            "defaultValue": "/subscriptions/b6a799d5-67cd-4e7e-a7e5-32064ffc8ddd/resourceGroups/adventure-works-rg/providers/Microsoft.Network/applicationGateways/aw-app-gateway/backendHttpSettingsCollection/appGatewayBackendHttpSettings",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "comments": "Generalized from resource: '/subscriptions/b6a799d5-67cd-4e7e-a7e5-32064ffc8ddd/resourceGroups/adventure-works-rg/providers/Microsoft.Compute/availabilitySets/aw-availability-set'.",
+            "type": "Microsoft.Compute/availabilitySets",
+            "sku": {
+                "name": "Aligned"
+            },
+            "name": "[parameters('availabilitySets_aw_availability_set_name')]",
+            "apiVersion": "2017-12-01",
+            "location": "eastus",
+            "scale": null,
+            "properties": {
+                "platformUpdateDomainCount": 5,
+                "platformFaultDomainCount": 2,
+                "virtualMachines": [
+                    {
+                        "id": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_aw_vm_app1_name'))]"
+                    },
+                    {
+                        "id": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_aw_vm_app2_name'))]"
+                    },
+                    {
+                        "id": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_aw_vm_sql_name'))]"
+                    }
+                ]
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_aw_vm_app1_name'))]",
+                "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_aw_vm_app2_name'))]",
+                "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_aw_vm_sql_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b6a799d5-67cd-4e7e-a7e5-32064ffc8ddd/resourceGroups/adventure-works-rg/providers/Microsoft.Compute/disks/aw-vm-app1_OsDisk_1_349e084f2c0e47d78319dd44bd36d249'.",
+            "type": "Microsoft.Compute/disks",
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "name": "[parameters('disks_aw_vm_app1_OsDisk_1_349e084f2c0e47d78319dd44bd36d249_name')]",
+            "apiVersion": "2018-04-01",
+            "location": "eastus",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "osType": "Windows",
+                "creationData": {
+                    "createOption": "FromImage",
+                    "imageReference": {
+                        "id": "/Subscriptions/b6a799d5-67cd-4e7e-a7e5-32064ffc8ddd/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/WindowsServer/Skus/2016-Datacenter/Versions/2016.127.20180912"
+                    }
+                },
+                "diskSizeGB": 127
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b6a799d5-67cd-4e7e-a7e5-32064ffc8ddd/resourceGroups/adventure-works-rg/providers/Microsoft.Compute/virtualMachines/aw-vm-app1'.",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "[parameters('virtualMachines_aw_vm_app1_name')]",
+            "apiVersion": "2017-12-01",
+            "location": "eastus",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "availabilitySet": {
+                    "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_aw_availability_set_name'))]"
+                },
+                "hardwareProfile": {
+                    "vmSize": "Standard_DS1_v2"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "MicrosoftWindowsServer",
+                        "offer": "WindowsServer",
+                        "sku": "2016-Datacenter",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "osType": "Windows",
+                        "name": "[concat(parameters('virtualMachines_aw_vm_app1_name'),'_OsDisk_1_ba135ddbfc384fe99f31a8cbd44582c2')]",
+                        "createOption": "FromImage",
+                        "caching": "ReadWrite",
+                        "managedDisk": {
+                            "id": "[parameters('virtualMachines_aw_vm_app1_id')]"
+                        }
+                    },
+                    "dataDisks": []
+                },
+                "osProfile": {
+                    "computerName": "[parameters('virtualMachines_aw_vm_app1_name')]",
+                    "adminUsername": "aw-admin",
+                    "windowsConfiguration": {
+                        "provisionVMAgent": true,
+                        "enableAutomaticUpdates": true
+                    },
+                    "secrets": []
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_aw_vm_app1773_name'))]"
+                        }
+                    ]
+                },
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": true,
+                        "storageUri": "[concat('https', '://', parameters('storageAccounts_adventureworksrgdiag_name'), '.blob.core.windows.net', '/')]"
+                    }
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_aw_availability_set_name'))]",
+                "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_aw_vm_app1773_name'))]",
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_adventureworksrgdiag_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b6a799d5-67cd-4e7e-a7e5-32064ffc8ddd/resourceGroups/adventure-works-rg/providers/Microsoft.Compute/virtualMachines/aw-vm-app2'.",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "[parameters('virtualMachines_aw_vm_app2_name')]",
+            "apiVersion": "2017-12-01",
+            "location": "eastus",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "availabilitySet": {
+                    "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_aw_availability_set_name'))]"
+                },
+                "hardwareProfile": {
+                    "vmSize": "Standard_DS1_v2"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "MicrosoftWindowsServer",
+                        "offer": "WindowsServer",
+                        "sku": "2016-Datacenter",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "osType": "Windows",
+                        "name": "[concat(parameters('virtualMachines_aw_vm_app2_name'),'_OsDisk_1_1079db9f1c8c43558c0c523c7bdefce9')]",
+                        "createOption": "FromImage",
+                        "caching": "ReadWrite",
+                        "managedDisk": {
+                            "id": "[parameters('virtualMachines_aw_vm_app2_id')]"
+                        }
+                    },
+                    "dataDisks": []
+                },
+                "osProfile": {
+                    "computerName": "[parameters('virtualMachines_aw_vm_app2_name')]",
+                    "adminUsername": "aw-admin",
+                    "windowsConfiguration": {
+                        "provisionVMAgent": true,
+                        "enableAutomaticUpdates": true
+                    },
+                    "secrets": []
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_aw_vm_app2496_name'))]"
+                        }
+                    ]
+                },
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": true,
+                        "storageUri": "[concat('https', '://', parameters('storageAccounts_adventureworksrgdiag_name'), '.blob.core.windows.net', '/')]"
+                    }
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_aw_availability_set_name'))]",
+                "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_aw_vm_app2496_name'))]",
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_adventureworksrgdiag_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b6a799d5-67cd-4e7e-a7e5-32064ffc8ddd/resourceGroups/adventure-works-rg/providers/Microsoft.Compute/virtualMachines/aw-vm-sql'.",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "[parameters('virtualMachines_aw_vm_sql_name')]",
+            "apiVersion": "2017-12-01",
+            "location": "eastus",
+            "scale": null,
+            "properties": {
+                "availabilitySet": {
+                    "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_aw_availability_set_name'))]"
+                },
+                "hardwareProfile": {
+                    "vmSize": "Standard_D2s_v3"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "MicrosoftSQLServer",
+                        "offer": "SQL2016SP1-WS2016",
+                        "sku": "Enterprise",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "osType": "Windows",
+                        "name": "[concat(parameters('virtualMachines_aw_vm_sql_name'),'_OsDisk_1_1308fd66e8ab4d8a8e39a0c0b1dd1616')]",
+                        "createOption": "FromImage",
+                        "caching": "ReadWrite",
+                        "managedDisk": {
+                            "id": "[parameters('virtualMachines_aw_vm_sql_id')]"
+                        }
+                    },
+                    "dataDisks": [
+                        {
+                            "lun": 0,
+                            "name": "[concat(parameters('virtualMachines_aw_vm_sql_name'),'_disk2_d84a74cf7b9945b6a19459ac18e6ec2f')]",
+                            "createOption": "Empty",
+                            "caching": "ReadOnly",
+                            "managedDisk": {
+                                "id": "[parameters('virtualMachines_aw_vm_sql_id_1')]"
+                            }
+                        }
+                    ]
+                },
+                "osProfile": {
+                    "computerName": "[parameters('virtualMachines_aw_vm_sql_name')]",
+                    "adminUsername": "aw-admin",
+                    "windowsConfiguration": {
+                        "provisionVMAgent": true,
+                        "enableAutomaticUpdates": true
+                    },
+                    "secrets": []
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_aw_vm_sql640_name'))]"
+                        }
+                    ]
+                },
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": true,
+                        "storageUri": "[concat('https', '://', parameters('storageAccounts_adventureworksrgdiag_name'), '.blob.core.windows.net', '/')]"
+                    }
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_aw_availability_set_name'))]",
+                "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_aw_vm_sql640_name'))]",
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_adventureworksrgdiag_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b6a799d5-67cd-4e7e-a7e5-32064ffc8ddd/resourcegroups/adventure-works-rg/providers/microsoft.devtestlab/schedules/shutdown-computevm-aw-vm-app2'.",
+            "type": "microsoft.devtestlab/schedules",
+            "name": "[parameters('schedules_shutdown_computevm_aw_vm_app2_name')]",
+            "apiVersion": "2016-05-15",
+            "location": "eastus",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "status": "Enabled",
+                "taskType": "ComputeVmShutdownTask",
+                "dailyRecurrence": {
+                    "time": "1900"
+                },
+                "timeZoneId": "UTC",
+                "notificationSettings": {
+                    "status": "Disabled",
+                    "timeInMinutes": 30
+                },
+                "targetResourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_aw_vm_app2_name'))]",
+                "provisioningState": "Succeeded",
+                "uniqueIdentifier": "fb0ab6ec-12f4-44af-9b74-687fc729fb6e"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_aw_vm_app2_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b6a799d5-67cd-4e7e-a7e5-32064ffc8ddd/resourcegroups/adventure-works-rg/providers/microsoft.devtestlab/schedules/shutdown-computevm-aw-vm-app1'.",
+            "type": "microsoft.devtestlab/schedules",
+            "name": "[parameters('schedules_shutdown_computevm_aw_vm_app1_name')]",
+            "apiVersion": "2016-05-15",
+            "location": "eastus",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "status": "Enabled",
+                "taskType": "ComputeVmShutdownTask",
+                "dailyRecurrence": {
+                    "time": "1900"
+                },
+                "timeZoneId": "UTC",
+                "notificationSettings": {
+                    "status": "Disabled",
+                    "timeInMinutes": 30
+                },
+                "targetResourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_aw_vm_app1_name'))]",
+                "provisioningState": "Succeeded",
+                "uniqueIdentifier": "b8afc810-2533-4865-8da1-2c04127ebccc"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_aw_vm_app1_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b6a799d5-67cd-4e7e-a7e5-32064ffc8ddd/resourcegroups/adventure-works-rg/providers/microsoft.devtestlab/schedules/shutdown-computevm-aw-vm-sql'.",
+            "type": "microsoft.devtestlab/schedules",
+            "name": "[parameters('schedules_shutdown_computevm_aw_vm_sql_name')]",
+            "apiVersion": "2016-05-15",
+            "location": "eastus",
+            "scale": null,
+            "properties": {
+                "status": "Enabled",
+                "taskType": "ComputeVmShutdownTask",
+                "dailyRecurrence": {
+                    "time": "1900"
+                },
+                "timeZoneId": "UTC",
+                "notificationSettings": {
+                    "status": "Disabled",
+                    "timeInMinutes": 30
+                },
+                "targetResourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_aw_vm_sql_name'))]",
+                "provisioningState": "Succeeded",
+                "uniqueIdentifier": "3766d182-7e5a-48cd-b60a-ebf2dde4b83c"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_aw_vm_sql_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b6a799d5-67cd-4e7e-a7e5-32064ffc8ddd/resourceGroups/adventure-works-rg/providers/Microsoft.Network/applicationGateways/aw-app-gateway'.",
+            "type": "Microsoft.Network/applicationGateways",
+            "name": "[parameters('applicationGateways_aw_app_gateway_name')]",
+            "apiVersion": "2018-02-01",
+            "location": "eastus",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "c55b9596-a93a-4562-86d3-94c5b3d3a01f",
+                "sku": {
+                    "name": "Standard_Medium",
+                    "tier": "Standard",
+                    "capacity": 2
+                },
+                "gatewayIPConfigurations": [
+                    {
+                        "name": "appGatewayIpConfig",
+                        "etag": "W/\"020b2fcb-4c3e-4b6b-9209-b2b6005f1fe1\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "subnet": {
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_aw_vnet_name'), parameters('subnets_aw_gateway_subnet_name'))]"
+                            }
+                        },
+                        "type": "Microsoft.Network/applicationGateways/gatewayIPConfigurations"
+                    }
+                ],
+                "sslCertificates": [],
+                "authenticationCertificates": [],
+                "frontendIPConfigurations": [
+                    {
+                        "name": "appGatewayFrontendIP",
+                        "etag": "W/\"020b2fcb-4c3e-4b6b-9209-b2b6005f1fe1\"",
+                        "type": "Microsoft.Network/applicationGateways/frontendIPConfigurations",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_aw_gateway_ip_name'))]"
+                            }
+                        }
+                    }
+                ],
+                "frontendPorts": [
+                    {
+                        "name": "appGatewayFrontendPort",
+                        "etag": "W/\"020b2fcb-4c3e-4b6b-9209-b2b6005f1fe1\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "port": 80
+                        },
+                        "type": "Microsoft.Network/applicationGateways/frontendPorts"
+                    }
+                ],
+                "backendAddressPools": [
+                    {
+                        "name": "appGatewayBackendPool",
+                        "etag": "W/\"020b2fcb-4c3e-4b6b-9209-b2b6005f1fe1\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "backendAddresses": [
+                                {
+                                    "ipAddress": "10.0.1.6"
+                                },
+                                {
+                                    "ipAddress": "10.0.1.5"
+                                }
+                            ]
+                        },
+                        "type": "Microsoft.Network/applicationGateways/backendAddressPools"
+                    }
+                ],
+                "backendHttpSettingsCollection": [
+                    {
+                        "name": "appGatewayBackendHttpSettings",
+                        "etag": "W/\"020b2fcb-4c3e-4b6b-9209-b2b6005f1fe1\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "port": 80,
+                            "protocol": "Http",
+                            "cookieBasedAffinity": "Disabled",
+                            "pickHostNameFromBackendAddress": false,
+                            "requestTimeout": 30
+                        },
+                        "type": "Microsoft.Network/applicationGateways/backendHttpSettingsCollection"
+                    }
+                ],
+                "httpListeners": [
+                    {
+                        "name": "appGatewayHttpListener",
+                        "etag": "W/\"020b2fcb-4c3e-4b6b-9209-b2b6005f1fe1\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "frontendIPConfiguration": {
+                                "id": "[parameters('applicationGateways_aw_app_gateway_id')]"
+                            },
+                            "frontendPort": {
+                                "id": "[parameters('applicationGateways_aw_app_gateway_id_1')]"
+                            },
+                            "protocol": "Http",
+                            "requireServerNameIndication": false
+                        },
+                        "type": "Microsoft.Network/applicationGateways/httpListeners"
+                    }
+                ],
+                "urlPathMaps": [],
+                "requestRoutingRules": [
+                    {
+                        "name": "rule1",
+                        "etag": "W/\"020b2fcb-4c3e-4b6b-9209-b2b6005f1fe1\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "ruleType": "Basic",
+                            "httpListener": {
+                                "id": "[parameters('applicationGateways_aw_app_gateway_id_2')]"
+                            },
+                            "backendAddressPool": {
+                                "id": "[parameters('applicationGateways_aw_app_gateway_id_3')]"
+                            },
+                            "backendHttpSettings": {
+                                "id": "[parameters('applicationGateways_aw_app_gateway_id_4')]"
+                            }
+                        },
+                        "type": "Microsoft.Network/applicationGateways/requestRoutingRules"
+                    }
+                ],
+                "probes": [],
+                "redirectConfigurations": [],
+                "enableHttp2": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_aw_vnet_name'), parameters('subnets_aw_gateway_subnet_name'))]",
+                "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_aw_gateway_ip_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b6a799d5-67cd-4e7e-a7e5-32064ffc8ddd/resourceGroups/adventure-works-rg/providers/Microsoft.Network/networkInterfaces/aw-vm-app1773'.",
+            "type": "Microsoft.Network/networkInterfaces",
+            "name": "[parameters('networkInterfaces_aw_vm_app1773_name')]",
+            "apiVersion": "2018-02-01",
+            "location": "eastus",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "bcc572d8-b19a-4c49-9ac5-c5f284feb8ea",
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "etag": "W/\"a1545e63-eac2-4a51-924b-fb085e5b4d4d\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "privateIPAddress": "10.0.1.6",
+                            "privateIPAllocationMethod": "Dynamic",
+                            "subnet": {
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_aw_vnet_name'), parameters('subnets_aw_vm_subnet_name'))]"
+                            },
+                            "primary": true,
+                            "privateIPAddressVersion": "IPv4"
+                        }
+                    }
+                ],
+                "dnsSettings": {
+                    "dnsServers": [],
+                    "appliedDnsServers": []
+                },
+                "enableAcceleratedNetworking": false,
+                "enableIPForwarding": false,
+                "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_aw_vm_app_nsg_name'))]"
+                },
+                "primary": true
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_aw_vnet_name'), parameters('subnets_aw_vm_subnet_name'))]",
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_aw_vm_app_nsg_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b6a799d5-67cd-4e7e-a7e5-32064ffc8ddd/resourceGroups/adventure-works-rg/providers/Microsoft.Network/networkInterfaces/aw-vm-app2496'.",
+            "type": "Microsoft.Network/networkInterfaces",
+            "name": "[parameters('networkInterfaces_aw_vm_app2496_name')]",
+            "apiVersion": "2018-02-01",
+            "location": "eastus",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "0a225fbf-70df-4a8a-a81f-059b0f549de3",
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "etag": "W/\"33fc2bfe-acb5-4207-a5de-9c02fdff2fc9\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "privateIPAddress": "10.0.1.5",
+                            "privateIPAllocationMethod": "Dynamic",
+                            "subnet": {
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_aw_vnet_name'), parameters('subnets_aw_vm_subnet_name'))]"
+                            },
+                            "primary": true,
+                            "privateIPAddressVersion": "IPv4"
+                        }
+                    }
+                ],
+                "dnsSettings": {
+                    "dnsServers": [],
+                    "appliedDnsServers": []
+                },
+                "enableAcceleratedNetworking": false,
+                "enableIPForwarding": false,
+                "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_aw_vm_app_nsg_name'))]"
+                },
+                "primary": true
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_aw_vnet_name'), parameters('subnets_aw_vm_subnet_name'))]",
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_aw_vm_app_nsg_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b6a799d5-67cd-4e7e-a7e5-32064ffc8ddd/resourceGroups/adventure-works-rg/providers/Microsoft.Network/networkInterfaces/aw-vm-nic'.",
+            "type": "Microsoft.Network/networkInterfaces",
+            "name": "[parameters('networkInterfaces_aw_vm_nic_name')]",
+            "apiVersion": "2018-02-01",
+            "location": "eastus",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "adcdcc8d-c4f6-4c01-ad1e-071965e6b232",
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "etag": "W/\"4fac8c9f-7db7-4827-9493-72ddff81fbf7\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "privateIPAddress": "10.0.1.7",
+                            "privateIPAllocationMethod": "Dynamic",
+                            "subnet": {
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_aw_vnet_name'), parameters('subnets_aw_vm_subnet_name'))]"
+                            },
+                            "primary": true,
+                            "privateIPAddressVersion": "IPv4"
+                        }
+                    }
+                ],
+                "dnsSettings": {
+                    "dnsServers": [],
+                    "appliedDnsServers": [],
+                    "internalDomainNameSuffix": "nz0qqcol4cdu5n4ffny2541fpf.bx.internal.cloudapp.net"
+                },
+                "enableAcceleratedNetworking": false,
+                "enableIPForwarding": false,
+                "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_aw_vm_app_nsg_name'))]"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_aw_vnet_name'), parameters('subnets_aw_vm_subnet_name'))]",
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_aw_vm_app_nsg_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b6a799d5-67cd-4e7e-a7e5-32064ffc8ddd/resourceGroups/adventure-works-rg/providers/Microsoft.Network/networkInterfaces/aw-vm-sql640'.",
+            "type": "Microsoft.Network/networkInterfaces",
+            "name": "[parameters('networkInterfaces_aw_vm_sql640_name')]",
+            "apiVersion": "2018-02-01",
+            "location": "eastus",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "86dec7e4-9bd0-4ca7-860e-9ea47394c0b5",
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "etag": "W/\"04f35ee6-8ce8-4493-8e97-b1cfca05129e\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "privateIPAddress": "10.0.1.4",
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_aw_admin_ip_name'))]"
+                            },
+                            "subnet": {
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_aw_vnet_name'), parameters('subnets_aw_vm_subnet_name'))]"
+                            },
+                            "primary": true,
+                            "privateIPAddressVersion": "IPv4"
+                        }
+                    }
+                ],
+                "dnsSettings": {
+                    "dnsServers": [],
+                    "appliedDnsServers": []
+                },
+                "enableAcceleratedNetworking": false,
+                "enableIPForwarding": false,
+                "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_aw_vm_app_nsg_name'))]"
+                },
+                "primary": true
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_aw_admin_ip_name'))]",
+                "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_aw_vnet_name'), parameters('subnets_aw_vm_subnet_name'))]",
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_aw_vm_app_nsg_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b6a799d5-67cd-4e7e-a7e5-32064ffc8ddd/resourceGroups/adventure-works-rg/providers/Microsoft.Network/networkSecurityGroups/aw-vm-app-nsg'.",
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "name": "[parameters('networkSecurityGroups_aw_vm_app_nsg_name')]",
+            "apiVersion": "2018-02-01",
+            "location": "eastus",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "193c17cd-f971-4d0e-85c8-af6eb8cdd524",
+                "securityRules": [
+                    {
+                        "name": "default-allow-rdp",
+                        "etag": "W/\"f5c07777-cd99-438f-ab8f-2e13e2982e30\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "3389",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 1000,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    }
+                ],
+                "defaultSecurityRules": [
+                    {
+                        "name": "AllowVnetInBound",
+                        "etag": "W/\"f5c07777-cd99-438f-ab8f-2e13e2982e30\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Allow inbound traffic from all VMs in VNET",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "VirtualNetwork",
+                            "destinationAddressPrefix": "VirtualNetwork",
+                            "access": "Allow",
+                            "priority": 65000,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "AllowAzureLoadBalancerInBound",
+                        "etag": "W/\"f5c07777-cd99-438f-ab8f-2e13e2982e30\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Allow inbound traffic from azure load balancer",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "AzureLoadBalancer",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 65001,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "DenyAllInBound",
+                        "etag": "W/\"f5c07777-cd99-438f-ab8f-2e13e2982e30\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Deny all inbound traffic",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Deny",
+                            "priority": 65500,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "AllowVnetOutBound",
+                        "etag": "W/\"f5c07777-cd99-438f-ab8f-2e13e2982e30\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Allow outbound traffic from all VMs to all VMs in VNET",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "VirtualNetwork",
+                            "destinationAddressPrefix": "VirtualNetwork",
+                            "access": "Allow",
+                            "priority": 65000,
+                            "direction": "Outbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "AllowInternetOutBound",
+                        "etag": "W/\"f5c07777-cd99-438f-ab8f-2e13e2982e30\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Allow outbound traffic from all VMs to Internet",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "Internet",
+                            "access": "Allow",
+                            "priority": 65001,
+                            "direction": "Outbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "DenyAllOutBound",
+                        "etag": "W/\"f5c07777-cd99-438f-ab8f-2e13e2982e30\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Deny all outbound traffic",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Deny",
+                            "priority": 65500,
+                            "direction": "Outbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b6a799d5-67cd-4e7e-a7e5-32064ffc8ddd/resourceGroups/adventure-works-rg/providers/Microsoft.Network/publicIPAddresses/aw-admin-ip'.",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "sku": {
+                "name": "Basic",
+                "tier": "Regional"
+            },
+            "name": "[parameters('publicIPAddresses_aw_admin_ip_name')]",
+            "apiVersion": "2018-02-01",
+            "location": "eastus",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "63f4cbf3-b94b-4132-9191-2719d5bf9d29",
+                "publicIPAddressVersion": "IPv4",
+                "publicIPAllocationMethod": "Dynamic",
+                "idleTimeoutInMinutes": 4,
+                "ipTags": []
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b6a799d5-67cd-4e7e-a7e5-32064ffc8ddd/resourceGroups/adventure-works-rg/providers/Microsoft.Network/publicIPAddresses/aw-gateway-ip'.",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "sku": {
+                "name": "Basic",
+                "tier": "Regional"
+            },
+            "name": "[parameters('publicIPAddresses_aw_gateway_ip_name')]",
+            "apiVersion": "2018-02-01",
+            "location": "eastus",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "42907877-471a-4063-b425-6a5f2398dec8",
+                "ipAddress": "40.117.213.93",
+                "publicIPAddressVersion": "IPv4",
+                "publicIPAllocationMethod": "Dynamic",
+                "idleTimeoutInMinutes": 4,
+                "dnsSettings": {
+                    "fqdn": "73c8e7fc-aa19-40ad-b51a-5d0f0b86d92b.cloudapp.net",
+                    "domainNameLabel": "[parameters('publicIPAddresses_aw_gateway_ip_domainNameLabel')]"
+                },
+                "ipTags": []
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b6a799d5-67cd-4e7e-a7e5-32064ffc8ddd/resourceGroups/adventure-works-rg/providers/Microsoft.Network/virtualNetworks/aw-vnet'.",
+            "type": "Microsoft.Network/virtualNetworks",
+            "name": "[parameters('virtualNetworks_aw_vnet_name')]",
+            "apiVersion": "2018-02-01",
+            "location": "eastus",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "0908756e-f0cb-4f87-b7c5-2b71cffb657d",
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "10.0.0.0/16"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "aw-gateway-subnet",
+                        "etag": "W/\"782c0060-56a2-478e-9cad-983cdc5e287f\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "addressPrefix": "10.0.0.0/24"
+                        }
+                    },
+                    {
+                        "name": "aw-vm-subnet",
+                        "etag": "W/\"782c0060-56a2-478e-9cad-983cdc5e287f\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "addressPrefix": "10.0.1.0/24",
+                            "serviceEndpoints": []
+                        }
+                    }
+                ],
+                "virtualNetworkPeerings": [],
+                "enableDdosProtection": false,
+                "enableVmProtection": false
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b6a799d5-67cd-4e7e-a7e5-32064ffc8ddd/resourceGroups/adventure-works-rg/providers/Microsoft.Storage/storageAccounts/adventureworksrgdiag'.",
+            "type": "Microsoft.Storage/storageAccounts",
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "kind": "Storage",
+            "name": "[parameters('storageAccounts_adventureworksrgdiag_name')]",
+            "apiVersion": "2018-07-01",
+            "location": "eastus",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "networkAcls": {
+                    "bypass": "AzureServices",
+                    "virtualNetworkRules": [],
+                    "ipRules": [],
+                    "defaultAction": "Allow"
+                },
+                "supportsHttpsTrafficOnly": false,
+                "encryption": {
+                    "services": {
+                        "file": {
+                            "enabled": true
+                        },
+                        "blob": {
+                            "enabled": true
+                        }
+                    },
+                    "keySource": "Microsoft.Storage"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b6a799d5-67cd-4e7e-a7e5-32064ffc8ddd/resourceGroups/adventure-works-rg/providers/Microsoft.Network/networkSecurityGroups/aw-vm-app-nsg/securityRules/default-allow-rdp'.",
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+            "name": "[concat(parameters('networkSecurityGroups_aw_vm_app_nsg_name'), '/', parameters('securityRules_default_allow_rdp_name'))]",
+            "apiVersion": "2018-02-01",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "protocol": "*",
+                "sourcePortRange": "*",
+                "destinationPortRange": "3389",
+                "sourceAddressPrefix": "*",
+                "destinationAddressPrefix": "*",
+                "access": "Allow",
+                "priority": 1000,
+                "direction": "Inbound",
+                "sourcePortRanges": [],
+                "destinationPortRanges": [],
+                "sourceAddressPrefixes": [],
+                "destinationAddressPrefixes": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_aw_vm_app_nsg_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b6a799d5-67cd-4e7e-a7e5-32064ffc8ddd/resourceGroups/adventure-works-rg/providers/Microsoft.Network/virtualNetworks/aw-vnet/subnets/aw-gateway-subnet'.",
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "name": "[concat(parameters('virtualNetworks_aw_vnet_name'), '/', parameters('subnets_aw_gateway_subnet_name'))]",
+            "apiVersion": "2018-02-01",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "addressPrefix": "10.0.0.0/24"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_aw_vnet_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b6a799d5-67cd-4e7e-a7e5-32064ffc8ddd/resourceGroups/adventure-works-rg/providers/Microsoft.Network/virtualNetworks/aw-vnet/subnets/aw-vm-subnet'.",
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "name": "[concat(parameters('virtualNetworks_aw_vnet_name'), '/', parameters('subnets_aw_vm_subnet_name'))]",
+            "apiVersion": "2018-02-01",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "addressPrefix": "10.0.1.0/24",
+                "serviceEndpoints": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_aw_vnet_name'))]"
+            ]
+        }
+    ]
+}

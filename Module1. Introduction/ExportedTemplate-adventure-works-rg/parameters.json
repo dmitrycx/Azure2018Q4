@@ -1,0 +1,99 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "publicIPAddresses_aw_gateway_ip_domainNameLabel": {
+            "value": null
+        },
+        "virtualNetworks_aw_vnet_name": {
+            "value": null
+        },
+        "virtualMachines_aw_vm_sql_name": {
+            "value": null
+        },
+        "virtualMachines_aw_vm_app1_name": {
+            "value": null
+        },
+        "virtualMachines_aw_vm_app2_name": {
+            "value": null
+        },
+        "networkInterfaces_aw_vm_nic_name": {
+            "value": null
+        },
+        "publicIPAddresses_aw_admin_ip_name": {
+            "value": null
+        },
+        "networkInterfaces_aw_vm_sql640_name": {
+            "value": null
+        },
+        "networkInterfaces_aw_vm_app1773_name": {
+            "value": null
+        },
+        "networkInterfaces_aw_vm_app2496_name": {
+            "value": null
+        },
+        "publicIPAddresses_aw_gateway_ip_name": {
+            "value": null
+        },
+        "applicationGateways_aw_app_gateway_name": {
+            "value": null
+        },
+        "networkSecurityGroups_aw_vm_app_nsg_name": {
+            "value": null
+        },
+        "availabilitySets_aw_availability_set_name": {
+            "value": null
+        },
+        "storageAccounts_adventureworksrgdiag_name": {
+            "value": null
+        },
+        "schedules_shutdown_computevm_aw_vm_sql_name": {
+            "value": null
+        },
+        "schedules_shutdown_computevm_aw_vm_app2_name": {
+            "value": null
+        },
+        "schedules_shutdown_computevm_aw_vm_app1_name": {
+            "value": null
+        },
+        "subnets_aw_vm_subnet_name": {
+            "value": null
+        },
+        "subnets_aw_gateway_subnet_name": {
+            "value": null
+        },
+        "disks_aw_vm_app1_OsDisk_1_349e084f2c0e47d78319dd44bd36d249_name": {
+            "value": null
+        },
+        "securityRules_default_allow_rdp_name": {
+            "value": null
+        },
+        "virtualMachines_aw_vm_app1_id": {
+            "value": null
+        },
+        "virtualMachines_aw_vm_app2_id": {
+            "value": null
+        },
+        "virtualMachines_aw_vm_sql_id": {
+            "value": null
+        },
+        "virtualMachines_aw_vm_sql_id_1": {
+            "value": null
+        },
+        "applicationGateways_aw_app_gateway_id": {
+            "value": null
+        },
+        "applicationGateways_aw_app_gateway_id_1": {
+            "value": null
+        },
+        "applicationGateways_aw_app_gateway_id_2": {
+            "value": null
+        },
+        "applicationGateways_aw_app_gateway_id_3": {
+            "value": null
+        },
+        "applicationGateways_aw_app_gateway_id_4": {
+            "value": null
+        }
+    }
+}
