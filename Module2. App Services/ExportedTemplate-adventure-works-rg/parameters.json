@@ -1,0 +1,75 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "sites_hr_console_kolotsey_name": {
+            "value": null
+        },
+        "virtualNetworks_aw_vnet_name": {
+            "value": null
+        },
+        "virtualMachines_aw_vm_sql_name": {
+            "value": null
+        },
+        "publicIPAddresses_aw_admin_ip_name": {
+            "value": null
+        },
+        "storageAccounts_awdiagnostics_name": {
+            "value": null
+        },
+        "sites_production_manager_kolotsey_name": {
+            "value": null
+        },
+        "networkInterfaces_aw_vm_sql729_name": {
+            "value": null
+        },
+        "serverfarms_aw_web_app_service_plan_name": {
+            "value": null
+        },
+        "config_web_name": {
+            "value": null
+        },
+        "components_adventure_works_insight_name": {
+            "value": null
+        },
+        "networkSecurityGroups_aw_vm_sql_nsg_name": {
+            "value": null
+        },
+        "availabilitySets_aw_availability_set_name": {
+            "value": null
+        },
+        "alertrules_aw_departmentrequest_alert_name": {
+            "value": null
+        },
+        "config_web_name_1": {
+            "value": null
+        },
+        "schedules_shutdown_computevm_aw_vm_sql_name": {
+            "value": null
+        },
+        "subnets_aw_vm_subnet_name": {
+            "value": null
+        },
+        "alertrules_Failure_Anomalies___adventure_worjs_insight_name": {
+            "value": null
+        },
+        "securityRules_default_allow_rdp_name": {
+            "value": null
+        },
+        "securityRules_default_allow_tcp_name": {
+            "value": null
+        },
+        "hostNameBindings_hr_console_kolotsey.azurewebsites.net_name": {
+            "value": null
+        },
+        "hostNameBindings_production_manager_kolotsey.azurewebsites.net_name": {
+            "value": null
+        },
+        "virtualMachines_aw_vm_sql_id": {
+            "value": null
+        },
+        "virtualMachines_aw_vm_sql_id_1": {
+            "value": null
+        }
+    }
+}
